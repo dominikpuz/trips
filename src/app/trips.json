@@ -1,0 +1,124 @@
+{
+    "trips": [
+        {
+            "name": "Sightseeing in Poland",
+            "destination": "Poland",
+            "startDate": "01.01.2023",
+            "endDate": "07.01.2023",
+            "unitPrice": 1234,
+            "currParticipants": 0,
+            "maxParticipants": 10,
+            "description": "Short description",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/3/35/Neckertal_20150527-6384.jpg",
+            "rating": 3
+        },
+        {
+            "name": "Discover Japan",
+            "destination": "Japan",
+            "startDate": "15.04.2023",
+            "endDate": "29.04.2023",
+            "unitPrice": 1000,
+            "currParticipants": 2,
+            "maxParticipants": 15,
+            "description": "Dream of every weeb",
+            "image": "https://www.state.gov/wp-content/uploads/2019/04/Japan-2107x1406.jpg",
+            "rating": 5
+        },
+        {
+            "name": "Visit China",
+            "destination": "China",
+            "startDate": "15.04.2023",
+            "endDate": "29.04.2023",
+            "unitPrice": 1000,
+            "currParticipants": 2,
+            "maxParticipants": 15,
+            "description": "Great opportunity to admire high speed rail",
+            "image": "https://signal.supchina.com/wp-content/uploads/2019/09/topimage.jpg",
+            "rating": 4
+        },
+        {
+            "name": "Sunny Greece",
+            "destination": "Greece",
+            "startDate": "15.04.2023",
+            "endDate": "29.04.2023",
+            "unitPrice": 1000,
+            "currParticipants": 2,
+            "maxParticipants": 15,
+            "description": "Short description",
+            "image": "https://handluggageonly.co.uk/wp-content/uploads/2015/05/Hand-Luggage-Only-7.jpg",
+            "rating": 4
+        },
+        {
+            "name": "Cold Norway",
+            "destination": "Norway",
+            "startDate": "15.04.2023",
+            "endDate": "29.04.2023",
+            "unitPrice": 800,
+            "currParticipants": 3,
+            "maxParticipants": 14,
+            "description": "Cool trip",
+            "image": "https://deih43ym53wif.cloudfront.net/northern-lights-skagsanden-beach-lofoten-norway-shutterstock_1120772963_db36cd9e1b.jpeg",
+            "rating": 4
+        },
+        {
+            "name": "Despair",
+            "destination": "Russia",
+            "startDate": "15.04.2023",
+            "endDate": "29.04.2023",
+            "unitPrice": 1,
+            "currParticipants": 0,
+            "maxParticipants": 100,
+            "description": "{REDACTED}",
+            "image": "https://gumlet.assettype.com/afkgaming%2F2022-02%2Fe063c290-ee60-4c95-b732-82972cbf3298%2FUntitled_design__63___1_.jpg?format=auto",
+            "rating": 0
+        },
+        {
+            "name": "Visit germant",
+            "destination": "Germany",
+            "startDate": "17.09.2023",
+            "endDate": "4.10.2023",
+            "unitPrice": 300,
+            "currParticipants": 10,
+            "maxParticipants": 20,
+            "description": "Visit Germany during Oktoberfest",
+            "image": "https://www.deutschland.de/sites/default/files/media/image/tdt_29092020_1_staat_16_laender_schwerin.jpg",
+            "rating": 4
+        },
+        {
+            "name": "Don't get robbed challenge",
+            "destination": "France, Paris",
+            "startDate": "17.09.2023",
+            "endDate": "4.10.2023",
+            "unitPrice": 300,
+            "currParticipants": 10,
+            "maxParticipants": 20,
+            "description": "Visit Paris",
+            "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/4b/59/86/caption.jpg?w=500&h=300&s=1",
+            "rating": 2
+        },
+        {
+            "name": "Don't get shot challenge",
+            "destination": "USA",
+            "startDate": "17.09.2023",
+            "endDate": "4.10.2023",
+            "unitPrice": 1200,
+            "currParticipants": 9,
+            "maxParticipants": 11,
+            "description": "Visit the freest country on the planet (Yee haw!)",
+            "image": "https://bi.im-g.pl/im/32/c3/1b/z29112882IER,Kampania-przed-wyborami-do-Kongresu-USA.jpg",
+            "rating": 3
+        },
+        {
+            "name": "I hope you like maple syrup",
+            "destination": "Canada",
+            "startDate": "17.09.2023",
+            "endDate": "4.10.2023",
+            "unitPrice": 1100,
+            "currParticipants": 5,
+            "maxParticipants": 14,
+            "description": "The better of North American countries",
+            "image": "https://www.planetware.com/wpimages/2020/03/canada-best-cities-toronto-ontario.jpg",
+            "rating": 5
+        }
+    ]
+}

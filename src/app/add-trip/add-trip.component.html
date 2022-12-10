@@ -1,0 +1,42 @@
+<div id="container">
+  <div id="form">
+    <header>
+      <h1>Add trip</h1>
+      <div class="close" (click)="close()">
+      <span class="material-symbols-outlined">
+        close
+      </span>
+      </div>
+    </header>
+
+    <main>
+      <form #form=ngForm (ngSubmit)="onSubmit(form)">
+        <div class="form-field">
+          <label>Name</label><input name="name" type="text" ngModel #name="ngModel" required>
+        </div>
+        <div class="form-field">
+          <label>Destination</label><input name="destination" type="text" ngModel #destination="ngModel" required>
+        </div>
+        <div class="form-field">
+          <label>Unit price</label><input name="unitPrice" type="number" ngModel #unitPrice="ngModel" required>
+        </div>
+        <div class="form-field">
+          <label>Max participants</label><input name="maxParticipants" type="number" ngModel #maxParticipants="ngModel" required>
+        </div>
+        <div class="form-field">
+          <label>Description</label><textarea name="description" ngModel #description="ngModel" required></textarea>
+        </div>
+        <div class="form-field">
+          <label>Image</label><input name="image" type="text" ngModel #image="ngModel" required>
+        </div>
+        <div class="form-field">
+          <label>Start date</label><input name="startDate" type="date" ngModel #startDate="ngModel" required>
+        </div>
+        <div class="form-field">
+          <label>End date</label><input name="endDate" type="date" ngModel min="{{startDate.value}}" #endDate="ngModel" required>
+        </div>
+        <button type="submit" *ngIf="form.valid">Add trip</button>
+      </form>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<main [ngClass]="{
+  'cheapest': trip.unitPrice == getMinPrice(),
+  'most-expensive': trip.unitPrice == getMaxPrice()
+}">
+  <picture>
+    <img
+      src="{{trip.image}}" alt="{{trip.destination}}">
+  </picture>
+  <div class="remove-card" (click)="removeTrip()">
+    <span class="material-symbols-outlined">
+      delete
+    </span>
+  </div>
+  <h2 class="name">{{trip.name | uppercase}}</h2>
+  <div class="country">Destination: {{trip.destination | uppercase}}</div>
+  <p class="description">{{trip.description}}</p>
+  <div class="details">
+    <span class="price">{{trip.unitPrice}}{{CurrencyService.getCurrency()}}</span>
+    <div>
+      <div class="controls">
+        <div class="add" *ngIf="trip.currParticipants < trip.maxParticipants" (click)="addToCart()"><span>+</span></div>
+        <div class="remove" *ngIf="trip.tmpAmount > 0" (click)="removeFromCart()"><span>-</span></div>
+      </div>
+      <span [ngClass]="{'color-red': trip.maxParticipants - trip.currParticipants < 4}"
+            class="participants">{{trip.currParticipants}}/{{trip.maxParticipants}}</span>
+    </div>
+  </div>
+  <div class="dates">
+    <span class="start-date">Start date: {{trip.startDate}}</span>
+    <span class="end-date">End date: {{trip.endDate}}</span>
+  </div>
+  <div class="rating">Rating: {{trip.rating}}/5</div>
+</main>

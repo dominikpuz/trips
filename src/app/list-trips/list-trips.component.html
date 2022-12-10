@@ -1,0 +1,5 @@
+<main>
+  <div *ngFor="let tripItem of trips">
+    <app-trip-card [trips]="trips" [trip]="tripItem" (removeEvent)="removeTrip($event)"></app-trip-card>
+  </div>
+</main>
