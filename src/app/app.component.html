@@ -1,25 +1,2 @@
-<div id="container">
-  <header>
-    <h1>Trips</h1>
-    <div class="currency">
-      <select #currency (change)="CurrencyService.setCurrency(currency.value)">
-        <option value="$" >USD</option>
-        <option value="€" >EUR</option>
-        <option value="zł" >PLN</option>
-      </select>
-    </div>
-  </header>
-  <nav>
-    <button type="button" class="add-trip" (click)="openForm()">Add trip</button>
-    <app-add-trip [style.display]="formIsOpen ? 'block' : 'none'" (closeFormEvent)="closeForm($event)"></app-add-trip>
-  </nav>
-  <div class="cart">
-    <div>
-      <span class="material-symbols-outlined">
-      shopping_basket
-      </span>
-      <span id="count" [ngStyle]="{'background-color': CartService.getReservedTripsCount() < 10 ? 'red' : 'green'}" >{{CartService.getReservedTripsCount()}}</span>
-    </div>
-  </div>
-  <app-list-trips></app-list-trips>
-</div>
+<app-nav></app-nav>
+<router-outlet></router-outlet>

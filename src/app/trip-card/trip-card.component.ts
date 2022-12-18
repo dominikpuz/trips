@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Trip} from "../models/trip.model";
 import {CartService} from "../services/cart.service";
 import {CurrencyService} from "../services/currency.service";
+import {ParseTripsService} from "../services/parse-trips.service";
 
 @Component({
   selector: 'app-trip-card',
@@ -15,20 +16,18 @@ export class TripCardComponent implements OnInit {
 
   @Output() removeEvent: EventEmitter<Trip> = new EventEmitter<Trip>();
 
-  constructor(private CartService: CartService, public CurrencyService: CurrencyService) { }
+  constructor(private CartService: CartService, public CurrencyService: CurrencyService, private ParseTripsService: ParseTripsService) { }
 
   ngOnInit():void {
   }
 
   public addToCart() {
     this.trip.tmpAmount++;
-    this.trip.currParticipants++;
     this.CartService.addToCartEvent(this.trip);
   }
 
   public removeFromCart() {
     this.trip.tmpAmount--;
-    this.trip.currParticipants--;
     this.CartService.removeFromCartEvent(this.trip);
   }
 
@@ -49,7 +48,7 @@ export class TripCardComponent implements OnInit {
   }
 
   public removeTrip() {
-    this.removeEvent.emit(this.trip);
+    // this.ParseTripsService.deleteTrip(this.trip);
   }
 
 }

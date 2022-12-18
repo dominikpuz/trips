@@ -1,0 +1,58 @@
+<header>
+  <input type="checkbox" id="menu-toggle" [(ngModel)]="menu">
+  <label for="menu-toggle" id="burger">
+    <div class="top-bun"></div>
+    <div class="meat"></div>
+    <div class="bottom-bun"></div>
+  </label>
+  <div class="navigation-burger" [ngStyle]="{'display': menu == true ? 'flex' : 'none'}">
+    <div>
+      <a routerLink="/home" (click)="toggleMenu()">Home</a>
+    </div>
+    <div>
+      <a routerLink="/offers" (click)="toggleMenu()">Offers</a>
+    </div>
+    <div>
+      <a routerLink="/add-trip" (click)="toggleMenu()">Add trip</a>
+    </div>
+    <div>
+      <a routerLink="/trip-history" (click)="toggleMenu()">Trip history</a>
+    </div>
+  </div>
+  <div class="navigation">
+      <a routerLink="/home">Home</a>
+      <a routerLink="/offers" >Offers</a>
+      <a routerLink="/add-trip">Add trip</a>
+      <a routerLink="/trip-history">Trip history</a>
+  </div>
+  <div class="details">
+    <div class="currency">
+      <select #currency (change)="CurrencyService.setCurrency(currency.value)">
+        <option value="$">USD</option>
+        <option value="€">EUR</option>
+        <option value="zł">PLN</option>
+      </select>
+    </div>
+    <div class="cart">
+      <div>
+        <a routerLink="/cart">
+          <span class="material-symbols-outlined">
+          shopping_basket
+          </span>
+          <span id="count"
+                [ngStyle]="{'background-color': CartService.getReservedTripsCount() < 10 ? 'red' : 'green'}">
+            {{CartService.getReservedTripsCount()}}
+          </span>
+        </a>
+      </div>
+      <div id="cost">
+        <p>
+          Your cart value: {{CartService.getTotalCost()}}{{CurrencyService.getCurrency()}}
+        </p>
+      </div>
+    </div>
+    <div class="user">
+      <h3>user</h3>
+    </div>
+  </div>
+</header>

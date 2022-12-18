@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ParseTripsService} from "../services/parse-trips.service";
 import {Trip} from "../models/trip.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-trip',
@@ -14,7 +15,7 @@ export class AddTripComponent implements OnInit{
   @Output() closeFormEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-  constructor(private parseTripsService: ParseTripsService) {
+  constructor(private parseTripsService: ParseTripsService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -32,13 +33,11 @@ export class AddTripComponent implements OnInit{
       description: form.value.description,
       image: form.value.image,
       rating: 0,
-      tmpAmount: 0
     } as Trip;
-    this.parseTripsService.addTrip(trip);
-    this.close();
+    this.parseTripsService.addTrip(trip).then((r)=> {
+      this.router.navigateByUrl('/offers').then();
+    });
+
   }
 
-  public close(): void {
-    this.closeFormEvent.emit(false);
-  }
 }

@@ -3,8 +3,10 @@
   'most-expensive': trip.unitPrice == getMaxPrice()
 }">
   <picture>
-    <img
-      src="{{trip.image}}" alt="{{trip.destination}}">
+    <a routerLink="/offers/{{trip.id}}">
+      <img
+        src="{{trip.image}}" alt="{{trip.destination}}">
+    </a>
   </picture>
   <div class="remove-card" (click)="removeTrip()">
     <span class="material-symbols-outlined">
@@ -22,7 +24,7 @@
         <div class="remove" *ngIf="trip.tmpAmount > 0" (click)="removeFromCart()"><span>-</span></div>
       </div>
       <span [ngClass]="{'color-red': trip.maxParticipants - trip.currParticipants < 4}"
-            class="participants">{{trip.currParticipants}}/{{trip.maxParticipants}}</span>
+            class="participants"><span *ngIf="trip.tmpAmount > 0">({{trip.tmpAmount}})</span> {{trip.currParticipants}}/{{trip.maxParticipants}}</span>
     </div>
   </div>
   <div class="dates">
