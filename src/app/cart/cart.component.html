@@ -1,0 +1,40 @@
+<main>
+  <nav *ngIf="trips.length > 0">
+    <div class="cost">Your cart balance: {{CartService.getTotalCost()}}{{CurrencyService.getCurrency()}}</div>
+  </nav>
+  <div class="trip" *ngFor="let trip of trips">
+    <div class="card">
+      <picture>
+        <a routerLink="/offers/{{trip.id}}">
+          <img
+            src="{{trip.image}}" alt="{{trip.destination}}">
+        </a>
+      </picture>
+      <h2 class="name">{{trip.name | uppercase}}</h2>
+      <div class="country">Destination: {{trip.destination | uppercase}}</div>
+      <p class="description">{{trip.description}}</p>
+      <div class="details">
+        <span class="price">{{trip.unitPrice}}{{CurrencyService.getCurrency()}}</span>
+        <div>
+          <div class="controls">
+            <div class="add" *ngIf="trip.currParticipants < trip.maxParticipants" (click)="addToCart(trip)"><span>+</span></div>
+            <div class="remove" *ngIf="trip.tmpAmount > 0" (click)="removeFromCart(trip)"><span>-</span></div>
+          </div>
+          <span [ngClass]="{'color-red': trip.maxParticipants - trip.currParticipants < 4}"
+                class="participants"><span *ngIf="trip.tmpAmount > 0">({{trip.tmpAmount}})</span> {{trip.currParticipants}}/{{trip.maxParticipants}}</span>
+        </div>
+      </div>
+      <div class="dates">
+        <span class="start-date">Start date: {{trip.startDate}}</span>
+        <span class="end-date">End date: {{trip.endDate}}</span>
+      </div>
+      <div class="footer">
+        <div class="rating">Rating: {{trip.rating}}/5</div>
+        <div class="buy-trip">
+          <button (click)="buyTrip(trip)">Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="empty" *ngIf="trips.length == 0"><h1>Cart is empty!</h1></div>
+</main>

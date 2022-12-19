@@ -1,0 +1,61 @@
+<main>
+  <div *ngIf="trip" class="card">
+    <picture>
+      <img src="{{trip.image}}">
+    </picture>
+    <h2 class="name">{{trip.name | uppercase}}</h2>
+    <div class="country">{{trip.destination | uppercase}}</div>
+    <p class="description">{{trip.description}}</p>
+    <div class="details">
+      <span class="price">{{trip.unitPrice}}{{CurrencyService.getCurrency()}}</span>
+      <div>
+        <div class="controls">
+          <div class="add" *ngIf="trip.currParticipants < trip.maxParticipants" (click)="addToCart()">
+            <span>+</span>
+          </div>
+          <div class="remove" *ngIf="trip.tmpAmount > 0" (click)="removeFromCart()"><span>-</span></div>
+        </div>
+        <span [ngClass]="{'color-red': trip.maxParticipants - trip.currParticipants < 4}"
+              class="participants">{{trip.currParticipants}}/{{trip.maxParticipants}}</span>
+      </div>
+    </div>
+    <div class="dates">
+      <span class="start-date">Start date: {{trip.startDate}}</span>
+      <span class="end-date">End date: {{trip.endDate}}</span>
+    </div>
+    <div class="rating">Rating: {{trip.rating}}/5 </div>
+  </div>
+  <form [formGroup]="form">
+    <div class="rate-form">
+      <ngx-star-rating formControlName="rating" [id]="'rating'" ></ngx-star-rating>
+    </div>
+    <div class="username">
+      <label for="username">Username:</label>
+      <input name="username" id="username" type="text" formControlName="username">
+    </div>
+    <div class="trip-name">
+      <label for="name">Name:</label>
+      <input name="name" id="name" type="text" formControlName="name">
+    </div>
+    <div>
+      <label for="opinion">Opinion:</label>
+      <textarea name="opinion" id="opinion" formControlName="opinion"></textarea>
+    </div>
+    <div class="date">
+      <label for="date">Date:</label>
+      <input name="date" id="date" type="date" formControlName="date">
+    </div>
+    <div class="button">
+      <button (click)="onSubmit()">Submit</button>
+    </div>
+  </form>
+  <div class="opinions">
+    <div class="opinion" *ngFor="let opinion of opinions">
+      <p id="opinion-rating">{{opinion.rating}}/5</p>
+      <h2 id="opinion-username">{{opinion.username}}</h2>
+      <p id="opinion-date">{{opinion.date}}</p>
+      <h3 id="opinion-trip-name">{{opinion.name}}</h3>
+      <p id="opinion-text">{{opinion.opinion}}</p>
+    </div>
+  </div>
+</main>

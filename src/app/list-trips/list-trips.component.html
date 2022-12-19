@@ -1,5 +1,50 @@
 <main>
-  <div *ngFor="let tripItem of trips">
-    <app-trip-card [trips]="trips" [trip]="tripItem" (removeEvent)="removeTrip($event)"></app-trip-card>
+<!--  <nav>-->
+<!--    <div class="filter-button">Filter</div>-->
+<!--    <div class="filter-body">-->
+<!--      <form #form=ngForm>-->
+<!--        <div class="cost">-->
+<!--          <div>-->
+<!--            <label for="minCost">Min cost</label>-->
+<!--            <input [min]="getMinPrice()" type="number" id="minCost" ngModel #minPrice="ngModel">-->
+<!--          </div>-->
+<!--          <div>-->
+<!--            <label for="maxCost">Max cost</label>-->
+<!--            <input [max]="getMaxPrice()" type="number" id="maxCost" min="{{minPrice.value}}" ngModel #maxPrice="ngModel">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="date">-->
+<!--          <div>-->
+<!--            <label for="startDate">Start date</label>-->
+<!--            <input type="date" id="startDate">-->
+<!--          </div>-->
+<!--          <div>-->
+<!--            <label for="endDate">End date</label>-->
+<!--            <input type="date" id="endDate">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="location">-->
+<!--          <div>-->
+<!--            <label for="destination">Destination</label>-->
+<!--            <select id="destination">-->
+<!--              <option selected="selected" disabled value="">Destination</option>-->
+<!--              <option *ngFor="let trip of trips" >{{trip.destination}}</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="rating">-->
+<!--          <div>-->
+<!--            <label for="rating">Rating</label>-->
+<!--            <select id="rating">-->
+<!--              <option selected="selected" disabled value=""></option>-->
+<!--              <option *ngFor="let trip of trips" >{{trip.rating}}</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </nav>-->
+  <div class="trip" *ngFor="let tripItem of trips">
+    <app-trip-card [trips]="trips" [trip]="tripItem" *ngIf="tripItem.currParticipants < tripItem.maxParticipants "></app-trip-card>
   </div>
 </main>

@@ -1,15 +1,9 @@
-<div id="container">
+<main>
   <div id="form">
     <header>
       <h1>Add trip</h1>
-      <div class="close" (click)="close()">
-      <span class="material-symbols-outlined">
-        close
-      </span>
-      </div>
     </header>
-
-    <main>
+    <section>
       <form #form=ngForm (ngSubmit)="onSubmit(form)">
         <div class="form-field">
           <label>Name</label><input name="name" type="text" ngModel #name="ngModel" required>
@@ -36,7 +30,8 @@
           <label>End date</label><input name="endDate" type="date" ngModel min="{{startDate.value}}" #endDate="ngModel" required>
         </div>
         <button type="submit" *ngIf="form.valid">Add trip</button>
+        <button id="not-valid" *ngIf="!form.valid">Add trip</button>
       </form>
-    </main>
+    </section>
   </div>
-</div>
+</main>
