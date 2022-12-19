@@ -6,70 +6,19 @@ main {
   justify-content: space-evenly;
 }
 
-nav {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.filter-button {
-  width: 10%;
-  height: 6vh;
-  background-color: #1E4859;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  border-radius: 20px;
-  font-size: 1.2em;
-  margin: 1%;
-}
-
-.filter-body {
-  width: 90%;
-}
-
-form {
-  width: 100%;
-  background-color: #1d95c9;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
-.filter-body div {
-  width: 25%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.date div, .cost div  {
-  width: 40%;
-  margin: 1%;
-}
-
-input {
-  width: 100%;
-}
-
-.trip {
+div {
   width: 25%;
   margin: 1%;
 }
 
 @media (max-width: 900px) {
-  .trip {
+  div {
     width: 40%;
   }
 }
 
 @media (max-width: 650px) {
-  .trip {
+  div {
     width: 50%;
   }
 }

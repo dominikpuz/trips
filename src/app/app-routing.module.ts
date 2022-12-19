@@ -1,23 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ListTripsComponent} from "./list-trips/list-trips.component";
-import {HomeComponent} from "./home/home.component";
-import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
-import {AddTripComponent} from "./add-trip/add-trip.component";
-import {TripDetailsComponent} from "./trip-details/trip-details.component";
-import {CartComponent} from "./cart/cart.component";
-import {TripHistoryComponent} from "./trip-history/trip-history.component";
 
-const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'offers/:id', component: TripDetailsComponent},
-  {path: 'offers', component: ListTripsComponent},
-  {path: 'add-trip', component: AddTripComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'trip-history', component: TripHistoryComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: '**', component: PageNotFoundComponent}
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

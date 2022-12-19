@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Trip} from "../models/trip.model";
 import {ParseTripsService} from "../services/parse-trips.service";
-import {CartService} from "../services/cart.service";
-import {map} from "rxjs";
 
 @Component({
   selector: 'app-list-trips',
@@ -12,48 +10,22 @@ import {map} from "rxjs";
 export class ListTripsComponent implements  OnInit {
   trips!: Trip[];
 
-  public formIsOpen: boolean = false;
-
-  constructor(private ParseTripsService: ParseTripsService, public CartService: CartService) { }
+  constructor(private ParseTripsService: ParseTripsService) { }
 
   ngOnInit(): void {
-    this.ParseTripsService.getTrips().snapshotChanges().pipe(map((changes: any) => {
-      return changes.map((trip: any) => ({id: trip.payload.key, ... trip.payload.val()}))
-    })).subscribe((trips: Trip[]) => {
-      trips.forEach(trip => {
-        trip.tmpAmount = 0;
-        this.CartService.getReservedTrips().forEach((tripCart: Trip) => {
-          if (tripCart.id == trip.id) {
-            trip.tmpAmount = tripCart.tmpAmount;
-          }
-        });
-      });
+    this.ParseTripsService.getTrips().subscribe((trips: Trip[]) => {
+      trips.forEach(trip => trip.tmpAmount = 0);
       this.trips = trips;
     });
   }
 
-  public getMaxPrice(): number {
-    let maxPrice = this.trips[0].unitPrice;
-    this.trips.forEach((el) => {
-      maxPrice = Math.max(maxPrice, el.unitPrice);
-    });
-    return maxPrice;
-  }
-
-  public getMinPrice(): number {
-    let minPrice = this.trips[0].unitPrice;
-    this.trips.forEach((el) => {
-      minPrice = Math.min(minPrice, el.unitPrice);
-    });
-    return minPrice;
-  }
-
-  public openForm(): void {
-    this.formIsOpen = true;
-  }
-
-  public closeForm(value: boolean): void {
-    this.formIsOpen = value;
+  public removeTrip(trip: Trip): void {
+    for (let i = 0; i < this.trips.length; i++) {
+      if (trip === this.trips[i]) {
+        this.trips.splice(i,1);
+        break;
+      }
+    }
   }
 
 }
