@@ -30,8 +30,11 @@
       </div>
       <div class="footer">
         <div class="rating">Rating: {{trip.rating}}/5</div>
-        <div class="buy-trip">
+        <div class="buy-trip" *ngIf="AuthService.isLoggedIn()">
           <button (click)="buyTrip(trip)">Buy</button>
+        </div>
+        <div class="buy-trip" *ngIf="!AuthService.isLoggedIn()">
+          <button routerLink="/log-in">Buy</button>
         </div>
       </div>
     </div>

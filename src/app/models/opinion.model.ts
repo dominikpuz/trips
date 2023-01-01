@@ -3,5 +3,5 @@ export interface Opinion {
   name: string;
   opinion: string;
   date: string;
-  rating: number;
+  rating?: number;
 }

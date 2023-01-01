@@ -1,0 +1,146 @@
+main {
+  width: 100%;
+  min-height: 90vh;
+}
+
+nav {
+  width: 100%;
+}
+
+nav button {
+  margin: 1%;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #1d95c9;
+  background-color: #1E4859;
+  color: white;
+}
+
+.trips {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.trip-card {
+  width: 25%;
+  margin: 1%;
+  height: 60vh;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+  border-radius: 20px;
+  box-shadow: 8px 8px 25px -5px rgba(66, 68, 90, 1);
+}
+
+picture {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+img {
+  width: auto;
+  height: 100%;
+  margin-left: -50%;
+}
+
+.name {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.description {
+  width: 90%;
+  margin: 0 5% 0 5%;
+}
+
+.details {
+  width: 90%;
+  margin: 0 5% 0 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.details > div {
+  width: 50%;
+  display: flex;
+  justify-content: right;
+}
+
+.dates {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 5% 0 5%;
+  font-size: 0.7em;
+  border-top: lightgray 1px solid;
+  border-bottom: lightgray 1px solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.rating {
+  width: 50%;
+  margin: 0 0 5% 5%;
+}
+
+.edit {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5%;
+}
+
+.edit a {
+  text-decoration: none;
+  color: #1d95c9;
+}
+
+.remove-card {
+  color: red;
+  position: relative;
+  z-index: 5;
+  top: 1%;
+  right: -25%;
+  width: 25px;
+  height: 25px;
+}
+
+@media (max-width: 1300px) {
+  .remove-card {
+    right: -20%;
+  }
+}
+
+@media (max-width: 1100px) {
+  picture {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 900px) {
+  .remove-card {
+    right: -25%;
+  }
+
+  .trip-card {
+    width: 40%;
+  }
+}
+
+@media (max-width: 650px) {
+  .trip-card {
+    width: 50%;
+  }
+}

@@ -47,8 +47,4 @@ export class TripCardComponent implements OnInit {
     return minPrice;
   }
 
-  public removeTrip() {
-    // this.ParseTripsService.deleteTrip(this.trip);
-  }
-
 }

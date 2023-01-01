@@ -21,6 +21,11 @@ import { NgxStarRatingModule } from "ngx-star-rating";
 import { TripHistoryComponent } from './trip-history/trip-history.component';
 import { StatusPipe } from './pipes/status.pipe';
 import {NgxSliderModule} from "@angular-slider/ngx-slider";
+import { LoginComponent } from './login/login.component';
+import { AdminViewComponent } from './admin-view/admin-view.component';
+import { TripManagerComponent } from './trip-manager/trip-manager.component';
+import { RegisterComponent } from './register/register.component';
+import { EditTripComponent } from './edit-trip/edit-trip.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
     TripDetailsComponent,
     CartComponent,
     TripHistoryComponent,
-    StatusPipe
+    StatusPipe,
+    LoginComponent,
+    AdminViewComponent,
+    TripManagerComponent,
+    RegisterComponent,
+    EditTripComponent
   ],
   imports: [
     BrowserModule,

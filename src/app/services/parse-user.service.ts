@@ -2,19 +2,31 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase} from "@angular/fire/compat/database";
 import {Trip} from "../models/trip.model";
 import {ParseTripsService} from "./parse-trips.service";
+import {AuthService} from "./auth.service";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ParseUserService {
 
-  private userid = "1";
+  constructor(private db: AngularFireDatabase, private ParseTripsService: ParseTripsService, private AuthService: AuthService) {
+  }
 
-  constructor(private db: AngularFireDatabase, private ParseTripsService: ParseTripsService) {
+  public getUsers() {
+    return this.db.list('users');
   }
 
   public getTripHistory() {
-    return this.db.list('users/' + this.userid + '/trip-history');
+    return this.db.list('trip-history/' + this.AuthService.getUser().id);
+  }
+
+  public changeRoles(value: boolean, uid: string, role: string) {
+    return this.db.database.ref('users').child(uid).child('roles').child(role).set(value);
+  }
+
+  public banUser(value: boolean, uid: string) {
+    return this.db.database.ref('users').child(uid).child('banned').set(value);
   }
 
   private formatDate(date: Date) {
@@ -26,7 +38,7 @@ export class ParseUserService {
       ].join('-'));
   }
 
-  public butTrip(trip: Trip) {
+  public buyTrip(trip: Trip) {
     const data = {
       id: trip.id,
       name: trip.name,
@@ -41,8 +53,12 @@ export class ParseUserService {
     };
     trip.currParticipants += trip.tmpAmount;
     trip.tmpAmount = 0;
-    this.ParseTripsService.updateTrip(trip).then(() => {
-      return this.db.list('users/' + this.userid + '/trip-history').push(data);
+    this.ParseTripsService.updateTripByKey('currParticipants', trip.currParticipants, trip.id).then(() => {
+      return this.db.list('trip-history/' + this.AuthService.getUser().id).set(trip.id, data).catch(error => {
+        console.log(error.message);
+      });
+    }).catch(error => {
+      console.log(error.message);
     });
   }
 }

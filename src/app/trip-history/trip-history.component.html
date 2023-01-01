@@ -1,0 +1,39 @@
+<main>
+  <nav>
+    <div>
+      <select [(ngModel)]="selectedStatus" multiple>
+        <option disabled value="" >Filter by status</option>
+        <option ngValue="before">Not started yet</option>
+        <option ngValue="active">In Progress</option>
+        <option ngValue="archival">Archival</option>
+      </select>
+    </div>
+  </nav>
+  <div class="trip" *ngFor="let trip of trips | status:selectedStatus">
+    <div class="card" *ngIf="trip != null">
+      <picture>
+        <a routerLink="/offers/{{trip.id}}">
+          <img
+            src="{{trip.image}}" alt="{{trip.destination}}">
+        </a>
+      </picture>
+      <div class="tag" *ngIf="trip.status == 'before'"><p class="blue">Trip not started yet</p></div>
+      <div class="tag" *ngIf="trip.status == 'active'"><p class="green">Trip in progress</p></div>
+      <div class="tag" *ngIf="trip.status == 'archival'"><p class="orange">Archival</p></div>
+      <h2 class="name">{{trip.name | uppercase}}</h2>
+      <div class="country">Destination: {{trip.destination | uppercase}}</div>
+      <p class="description">{{trip.description}}</p>
+      <div class="details">
+        <span class="price">{{trip.unitPrice}}{{CurrencyService.getCurrency()}}</span>
+        <div>
+          <span class="purchaseDate">Purchased: <br>{{trip.purchaseDate}}</span>
+          <span class="amount">Trips bought: <br>{{trip.amountBought}}</span>
+        </div>
+      </div>
+      <div class="dates">
+        <span class="start-date">Start date: {{trip.startDate}}</span>
+        <span class="end-date">End date: {{trip.endDate}}</span>
+      </div>
+    </div>
+  </div>
+</main>

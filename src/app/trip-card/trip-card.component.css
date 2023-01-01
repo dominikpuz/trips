@@ -101,31 +101,3 @@ img {
 .most-expensive {
   border: orangered 4px solid;
 }
-
-.remove-card {
-  position: relative;
-  z-index: 5;
-  top: 1%;
-  right: -25%;
-  width: 25px;
-  height: 25px;
-}
-
-@media (max-width: 1300px) {
-  .remove-card {
-    right: -20%;
-  }
-}
-
-@media (max-width: 1100px) {
-  picture {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-@media (max-width: 900px) {
-  .remove-card {
-    right: -25%;
-  }
-}

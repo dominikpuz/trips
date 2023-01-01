@@ -1,0 +1,37 @@
+<main>
+  <div class="persistence">
+    <div>
+      <span>Current persistence: {{persistence}}</span>
+    </div>
+    <div>
+      <button (click)="setPersistence('local')">local</button>
+      <button (click)="setPersistence('session')">session</button>
+      <button (click)="setPersistence('none')">none</button>
+    </div>
+  </div>
+  <div class="user-list">
+    <table>
+      <tr>
+        <td>Display name</td>
+        <td>Customer</td>
+        <td>Manager</td>
+        <td>Admin</td>
+        <td>Banned</td>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>
+          <input [(ngModel)]="user.roles.customer" ngModel #customer="ngModel" type="checkbox" (change)="changeRoleCustomer(customer.value, user.id)">
+        </td>
+        <td>
+          <input [(ngModel)]="user.roles.manager"  ngModel #manager="ngModel" type="checkbox" (change)="changeRoleManager(manager.value, user.id)"  >
+        <td>
+          <input [(ngModel)]="user.roles.admin"  ngModel #admin="ngModel" type="checkbox" (change)="changeRoleAdmin(admin.value, user.id)" >
+        </td>
+        <td>
+          <input [(ngModel)]="user.banned"  ngModel #banned="ngModel" type="checkbox" (change)="banUser(banned.value, user.id)" >
+        </td>
+      </tr>
+    </table>
+  </div>
+</main>

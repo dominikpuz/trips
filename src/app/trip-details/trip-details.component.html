@@ -25,7 +25,7 @@
     </div>
     <div class="rating">Rating: {{trip.rating}}/5 </div>
   </div>
-  <form [formGroup]="form">
+  <form [formGroup]="form" *ngIf="(isBought && alreadyTookPlace && !alreadyCommented) || (user && user.roles.manager)">
     <div class="rate-form">
       <ngx-star-rating formControlName="rating" [id]="'rating'" ></ngx-star-rating>
     </div>

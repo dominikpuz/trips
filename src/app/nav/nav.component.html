@@ -12,18 +12,26 @@
     <div>
       <a routerLink="/offers" (click)="toggleMenu()">Offers</a>
     </div>
-    <div>
-      <a routerLink="/add-trip" (click)="toggleMenu()">Add trip</a>
-    </div>
-    <div>
+<!--    <div>-->
+<!--      <a routerLink="/add-trip" (click)="toggleMenu()">Add trip</a>-->
+<!--    </div>-->
+    <div *ngIf="AuthService.isLoggedIn() && AuthService.getUser().roles.customer">
       <a routerLink="/trip-history" (click)="toggleMenu()">Trip history</a>
+    </div>
+    <div *ngIf="AuthService.isLoggedIn() && AuthService.getUser().roles.admin">
+      <a routerLink="/admin-view" (click)="toggleMenu()">Admin view</a>
+    </div>
+    <div *ngIf="AuthService.isLoggedIn() && AuthService.getUser().roles.manager">
+      <a routerLink="/trip-manager" (click)="toggleMenu()">Trip manager</a>
     </div>
   </div>
   <div class="navigation">
       <a routerLink="/home">Home</a>
       <a routerLink="/offers" >Offers</a>
-      <a routerLink="/add-trip">Add trip</a>
-      <a routerLink="/trip-history">Trip history</a>
+<!--      <a routerLink="/add-trip">Add trip</a>-->
+      <a routerLink="/trip-history" *ngIf="AuthService.isLoggedIn() && AuthService.getUser().roles.customer">Trip history</a>
+      <a routerLink="/admin-view" *ngIf="AuthService.isLoggedIn() && AuthService.getUser().roles.admin">Admin view</a>
+      <a routerLink="/trip-manager" *ngIf="AuthService.isLoggedIn() && AuthService.getUser().roles.manager">Trip manager</a>
   </div>
   <div class="details">
     <div class="currency">
@@ -51,8 +59,20 @@
         </p>
       </div>
     </div>
-    <div class="user">
-      <h3>user</h3>
+    <div class="user" *ngIf="!AuthService.isLoggedIn()">
+      <span routerLink="/register">Register</span>
+      <span routerLink="/log-in">Log in</span>
+    </div>
+    <div class="user" *ngIf="AuthService.isLoggedIn() && AuthService.getUser() as User">
+      <div>
+        <span *ngIf="User.roles.customer && !User.roles.admin && !User.roles.manager">User:</span>
+        <span *ngIf="User.roles.admin">Admin:</span>
+        <span *ngIf="!User.roles.admin && User.roles.manager">Manager:</span>
+        <span>{{User.name}}</span>
+      </div>
+      <div>
+        <span (click)="AuthService.signOut()">Sign out</span>
+      </div>
     </div>
   </div>
 </header>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {CurrencyService} from "../services/currency.service";
 import {CartService} from "../services/cart.service";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-nav',
@@ -11,12 +12,10 @@ export class NavComponent {
 
   public menu = false;
 
-  constructor(public CurrencyService: CurrencyService, public CartService: CartService) {
-  }
+  constructor(public CurrencyService: CurrencyService, public CartService: CartService, public AuthService: AuthService) { }
 
   public toggleMenu(): void {
-    if (this.menu == false) {this.menu = true;}
-    else {this.menu = false;}
+    this.menu = !this.menu;
   }
 
 }

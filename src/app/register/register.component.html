@@ -1,0 +1,25 @@
+<main>
+  <div id="form">
+    <header>
+      <h1>Register</h1>
+    </header>
+    <section>
+      <form #form=ngForm (ngSubmit)="onSubmit(form)">
+        <div class="form-field">
+          <label>Nickname</label><input name="nickname" type="text" ngModel #nickname="ngModel" required>
+        </div>
+        <div class="form-field">
+          <label>Email</label><input name="email" type="text" ngModel #email="ngModel" required>
+        </div>
+        <div class="form-field">
+          <label>Password</label><input name="password" type="password" minlength="6" ngModel #password="ngModel" required>
+        </div>
+        <div class="form-field">
+          <label>Repeat password</label><input name="repeat-password" type="password" ngModel #repeatPassword="ngModel" required>
+        </div>
+        <button type="submit" *ngIf="form.valid && password.value == repeatPassword.value">Register</button>
+        <button id="not-valid" *ngIf="!form.valid || password.value != repeatPassword.value">Register</button>
+      </form>
+    </section>
+  </div>
+</main>

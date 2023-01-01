@@ -35,7 +35,7 @@ export class AddTripComponent implements OnInit{
       rating: 0,
     } as Trip;
     this.parseTripsService.addTrip(trip).then((r)=> {
-      this.router.navigateByUrl('/offers').then();
+      this.router.navigateByUrl('/trip-manager').then();
     });
 
   }

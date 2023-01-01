@@ -3,6 +3,7 @@ import {Cart} from "../models/cart.model";
 import {Trip} from "../models/trip.model";
 import {AngularFireDatabase} from "@angular/fire/compat/database";
 import {ParseUserService} from "./parse-user.service";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,16 @@ import {ParseUserService} from "./parse-user.service";
 export class CartService {
 
   private cart: Cart;
-  private dbRef;
+  // private dbRef;
 
-  constructor(private db: AngularFireDatabase, private ParseUserService: ParseUserService) {
+  constructor(private db: AngularFireDatabase, private ParseUserService: ParseUserService, private AuthService: AuthService) {
+    // this.AuthService.getUserObservable().subscribe()
     this.cart = {
       reservedTrips: [],
       reservedTripsTotal: 0,
       totalCost: 0
     };
-    this.dbRef = db.list('users/1/' + 'trip-history');
+    // this.dbRef = db.list('users/1/' + 'trip-history');
   }
 
   public getReservedTrips(): Trip[] {
@@ -63,7 +65,7 @@ export class CartService {
 
   public buyTrip(trip: Trip) {
     let tmp = trip.tmpAmount;
-    this.ParseUserService.butTrip(trip);
+    this.ParseUserService.buyTrip(trip);
     for (let i = 0; i < this.cart.reservedTrips.length; i++) {
       if (trip.id === this.cart.reservedTrips[i].id) {
         this.cart.reservedTrips.splice(i, 1);

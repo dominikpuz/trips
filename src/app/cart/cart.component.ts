@@ -3,6 +3,7 @@ import {Trip} from "../models/trip.model";
 import {CartService} from "../services/cart.service";
 import {CurrencyService} from "../services/currency.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,7 @@ import {Router} from "@angular/router";
 export class CartComponent implements OnInit{
   public trips!: Trip[];
 
-  constructor(private router: Router , public CartService: CartService, public CurrencyService: CurrencyService) {
+  constructor(private router: Router , public CartService: CartService, public CurrencyService: CurrencyService, public AuthService: AuthService) {
 
   }
 

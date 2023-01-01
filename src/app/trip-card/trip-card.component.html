@@ -8,11 +8,6 @@
         src="{{trip.image}}" alt="{{trip.destination}}">
     </a>
   </picture>
-  <div class="remove-card" (click)="removeTrip()">
-    <span class="material-symbols-outlined">
-      delete
-    </span>
-  </div>
   <h2 class="name">{{trip.name | uppercase}}</h2>
   <div class="country">Destination: {{trip.destination | uppercase}}</div>
   <p class="description">{{trip.description}}</p>

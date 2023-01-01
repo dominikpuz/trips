@@ -1,0 +1,43 @@
+<main>
+  <nav>
+    <button routerLink="/add-trip">Add trip</button>
+  </nav>
+  <div class="trips">
+    <div class="trip-card" *ngFor="let trip of trips">
+      <picture>
+        <a routerLink="/offers/{{trip.id}}">
+          <img
+            src="{{trip.image}}" alt="{{trip.destination}}">
+        </a>
+      </picture>
+      <div class="remove-card" (click)="removeTrip(trip)">
+        <span class="material-symbols-outlined">
+          delete
+        </span>
+      </div>
+      <h2 class="name">{{trip.name | uppercase}}</h2>
+      <div class="country">Destination: {{trip.destination | uppercase}}</div>
+      <p class="description">{{trip.description}}</p>
+      <div class="details">
+        <span class="price">{{trip.unitPrice}}{{CurrencyService.getCurrency()}}</span>
+        <div>
+          <span [ngClass]="{'color-red': trip.maxParticipants - trip.currParticipants < 4}"
+                class="participants"><span *ngIf="trip.tmpAmount > 0">({{trip.tmpAmount}}
+            )</span> {{trip.currParticipants}}/{{trip.maxParticipants}}</span>
+        </div>
+      </div>
+      <div class="dates">
+        <span class="start-date">Start date: {{trip.startDate}}</span>
+        <span class="end-date">End date: {{trip.endDate}}</span>
+      </div>
+      <div class="rating">Rating: {{trip.rating}}/5</div>
+      <div class="edit">
+        <span class="material-symbols-outlined">
+          <a routerLink="/edit-trip/{{trip.id}}">
+            edit
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</main>
